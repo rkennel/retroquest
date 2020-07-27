@@ -46,7 +46,7 @@ dependencies {
     compile 'org.apache.commons:commons-lang3:3.7'
     compile 'org.apache.httpcomponents:httpclient:4.5.5'
     compile 'commons-io:commons-io:2.6'
-    compile 'org.flywaydb:flyway-core'
+    compile 'org.flywaydb:flyway-core:4.2.0'
     runtime 'mysql:mysql-connector-java'
     runtime 'com.h2database:h2:1.4.197'
     runtime group: 'com.google.cloud.sql', name: 'mysql-socket-factory', version: '1.0.13'
