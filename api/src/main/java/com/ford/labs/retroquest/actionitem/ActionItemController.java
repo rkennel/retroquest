@@ -18,9 +18,11 @@
 package com.ford.labs.retroquest.actionitem;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ford.labs.retroquest.api.authorization.ApiAuthorization;
 import com.ford.labs.retroquest.websocket.WebsocketDeleteResponse;
 import com.ford.labs.retroquest.websocket.WebsocketPutResponse;
+import lombok.Data;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -56,7 +58,7 @@ public class ActionItemController {
 
     @PutMapping("/api/team/{teamId}/action-item/{thoughtId}/task")
     @PreAuthorize("@apiAuthorization.requestIsAuthorized(authentication, #teamId)")
-    public void updateActionItemTask(@PathVariable("thoughtId") Long actionItemId, @PathVariable("teamId") String teamId, @RequestBody ActionItem updatedActionItem) {
+    public void updateActionItemTask(@PathVariable("thoughtId") Long actionItemId, @PathVariable("teamId") String teamId, @RequestBody TaskDTO updatedActionItem) {
         ActionItem savedActionItem = actionItemRepository.findById(actionItemId).orElseThrow();
         savedActionItem.setTask(updatedActionItem.getTask());
         actionItemRepository.save(savedActionItem);
@@ -64,7 +66,7 @@ public class ActionItemController {
 
     @PutMapping("/api/team/{teamId}/action-item/{thoughtId}/assignee")
     @PreAuthorize("@apiAuthorization.requestIsAuthorized(authentication, #teamId)")
-    public void updateActionItemAssignee(@PathVariable("thoughtId") Long actionItemId, @PathVariable("teamId") String teamId, @RequestBody ActionItem updatedActionItem) {
+    public void updateActionItemAssignee(@PathVariable("thoughtId") Long actionItemId, @PathVariable("teamId") String teamId, @RequestBody AssigneeDTO updatedActionItem) {
         ActionItem savedActionItem = actionItemRepository.findById(actionItemId).orElseThrow();
         savedActionItem.setAssignee(updatedActionItem.getAssignee());
         actionItemRepository.save(savedActionItem);
@@ -145,5 +147,17 @@ public class ActionItemController {
     @PreAuthorize("@apiAuthorization.requestIsAuthorized(authentication, #teamId)")
     public void deleteActionItemByTeamIdAndId(@PathVariable("teamId") String teamId, @PathVariable("id") Long id) {
         actionItemRepository.deleteActionItemByTeamIdAndId(teamId, id);
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    @Data
+    private static class AssigneeDTO {
+        private String assignee;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    @Data
+    private static class TaskDTO {
+        private String task;
     }
 }
