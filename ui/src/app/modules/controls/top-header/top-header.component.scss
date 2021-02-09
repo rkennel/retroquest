@@ -30,6 +30,8 @@
   padding-left: $global-side-padding;
   padding-right: $global-side-padding;
 
+  background-color: burlywood;
+
   @media only screen and (max-width: 610px) {
     height: 42px;
     min-width: 0;

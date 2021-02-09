@@ -73,21 +73,7 @@
     }"
   >
     <rq-tooltip text="Upvote" [theme]="theme"></rq-tooltip>
-
-    <div
-      class="star-background"
-      [ngClass]="{
-        'opacify': (task.discussed || taskEditModeEnabled) && !archived,
-        'dark-theme': darkThemeIsEnabled
-      }"
-    >
-      <i
-        class="fas fa-star star-icon"
-        [ngClass]="{
-          'dark-theme': darkThemeIsEnabled
-        }"
-      ></i>
-    </div>
+      <img src="assets/trollface.png" style="width: 30px"/>
     <div class="star-count"
          [ngClass]="{'opacify': (task.discussed || taskEditModeEnabled) && !archived}"
     >{{task.hearts}}

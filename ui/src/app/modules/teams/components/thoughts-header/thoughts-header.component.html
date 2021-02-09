@@ -34,6 +34,10 @@
     [theme]="theme"
   ></rq-text-field>
 
+  <img src="./assets/computerswirl.gif" style="width: 100%; height: 237px" *ngIf="thoughtAggregation.topic === 'happy'"/>
+  <img src="./assets/rick.gif" style="width: 100%" *ngIf="thoughtAggregation.topic === 'confused'"/>
+  <img src="./assets/sanic.gif" style="width: 100%" *ngIf="thoughtAggregation.topic === 'unhappy'"/>
+
   <rq-count-seperator
     [count]="thoughtCount"
     [theme]="theme"
