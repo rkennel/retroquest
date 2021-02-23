@@ -95,26 +95,18 @@ public class TeamService {
     }
 
     public List<ColumnTitle> generateColumns(Team teamEntity) {
-        ColumnTitle happyColumnTitle = new ColumnTitle();
-        happyColumnTitle.setTeamId(teamEntity.getUri());
-        happyColumnTitle.setTopic("happy");
-        happyColumnTitle.setTitle("Happy");
-
-        ColumnTitle confusedColumnTitle = new ColumnTitle();
-        confusedColumnTitle.setTeamId(teamEntity.getUri());
-        confusedColumnTitle.setTopic("confused");
-        confusedColumnTitle.setTitle("Confused");
-
-        ColumnTitle unhappyColumnTitle = new ColumnTitle();
-        unhappyColumnTitle.setTeamId(teamEntity.getUri());
-        unhappyColumnTitle.setTopic("unhappy");
-        unhappyColumnTitle.setTitle("Sad");
 
         List<ColumnTitle> columns = new ArrayList<>();
 
-        columns.add(columnTitleRepository.save(happyColumnTitle));
-        columns.add(columnTitleRepository.save(confusedColumnTitle));
-        columns.add(columnTitleRepository.save(unhappyColumnTitle));
+        for(int i=0;i<5;i++){
+            ColumnTitle columnTitle = new ColumnTitle();
+            columnTitle.setTeamId(teamEntity.getUri());
+            columnTitle.setTopic("title"+(i+1));
+            columnTitle.setTitle("Title "+(i+1));
+
+            columns.add(columnTitleRepository.save(columnTitle));
+        }
+
         return columns;
     }
 

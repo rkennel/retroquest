@@ -149,11 +149,51 @@
     }
   }
 
-  &.happy {
-    background-color: $happy-green;
+  &.title1 {
+    background-color: $title1;
 
     &.dark-theme {
-      background-color: $nephritis;
+      background-color: $title1-dark;
+    }
+  }
+
+  &.title2 {
+    background-color: $title2;
+
+    &.dark-theme {
+      background-color: $title2-dark;
+    }
+  }
+
+  &.title3 {
+    background-color: $title3;
+
+    &.dark-theme {
+      background-color: $title3-dark;
+    }
+  }
+
+  &.title4 {
+    background-color: $title4;
+
+    &.dark-theme {
+      background-color: $title4-dark;
+    }
+  }
+
+  &.title5 {
+    background-color: $title5;
+
+    &.dark-theme {
+      background-color: $title5-dark;
+    }
+  }
+
+  &.happy {
+    background-color: $title1;
+
+    &.dark-theme {
+      background-color: $title1-dark;
     }
   }
 

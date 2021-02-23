@@ -70,6 +70,46 @@
       }
     }
 
+    &.title1 {
+      border-color: $title1;
+
+      &.dark-theme {
+        border-color: $title1-dark;
+      }
+    }
+
+    &.title2 {
+      border-color: $title2;
+
+      &.dark-theme {
+        border-color: $title2-dark;
+      }
+    }
+
+    &.title3 {
+      border-color: $title3;
+
+      &.dark-theme {
+        border-color: $title3-dark;
+      }
+    }
+
+    &.title4 {
+      border-color: $title4;
+
+      &.dark-theme {
+        border-color: $title4-dark;
+      }
+    }
+
+    &.title5 {
+      border-color: $title5;
+
+      &.dark-theme {
+        border-color: $title5-dark;
+      }
+    }
+
     &.confused {
       border-color: $confused-blue;
 

@@ -16,13 +16,7 @@
   -->
 
 <input
-  [ngClass]="{
-    'happy': type === 'happy',
-    'confused': type === 'confused',
-    'sad': type === 'unhappy',
-    'action': type === 'action',
-    'dark-theme': darkThemeIsEnabled
-  }"
+  [ngClass]="type"
   type="text"
   placeholder="{{placeholder}}"
   maxlength="255"
