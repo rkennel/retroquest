@@ -73,6 +73,14 @@ export class TeamPageComponent implements OnInit {
     return this.theme === Themes.Dark;
   }
 
+  get wthRulesLogo(): string {
+    if (this.darkThemeIsEnabled) {
+      return '/assets/wth-rules-dark.svg';
+    }
+
+    return '/assets/wth-rules.svg';
+  }
+
   private isMobileView = (): boolean => window.innerWidth <= 610;
 
   ngOnInit(): void {
@@ -89,6 +97,9 @@ export class TeamPageComponent implements OnInit {
     this.columnAggregationService.getColumns(this.teamId).subscribe(
       (body) => {
         this.columnsAggregation = body.columns;
+
+        // remove action items
+        this.columnsAggregation.pop();
       }
     );
 

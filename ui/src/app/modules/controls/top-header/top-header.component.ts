@@ -75,6 +75,14 @@ export class TopHeaderComponent implements OnInit {
     return 'Last change saved at ' + this.saveCheckerService.lastSavedDateTime;
   }
 
+  get themeLogo(): string {
+    if (this.darkThemeIsEnabled) {
+      return '/assets/Logo-WTH-01-dark.svg';
+    }
+
+    return '/assets/Logo-WTH-01.svg';
+  }
+
 
   isSelected(view: string): boolean {
     return this.selectedView === view;

@@ -87,14 +87,23 @@ $text-field-background-color: #364d64;
 $header-background-color-dark: opacity($black, .22);
 
 //WTH MODIFICATIONS
-$title1: $happy-green;
-$title2: $confused-blue;
-$title3: $action-yellow;
-$title4: $unhappy-red;
-$title5: #9965F4;
 
-$title1-dark: $nephritis;
-$title2-dark: $belize-hole;
-$title3-dark: $orange;
-$title4-dark: $pomegranate;
-$title5-dark: #7E3FF2;
+/*
+Dark gray = a9a9a9
+Black = 000000
+Orange = e16e38
+Blue = 69c2e2
+Dark blue = 2c5d6e
+ */
+
+$title1: #69c2e2;
+$title2: #2c5d6e;
+$title3: #e16e38;
+$title4: #a9a9a9;
+$title5: #000000;
+
+$title1-dark: #8dd3eb;
+$title2-dark: #7ba8b9;
+$title3-dark: #e6865b;
+$title4-dark: #c7c7c7;
+$title5-dark: #7b7b7b;

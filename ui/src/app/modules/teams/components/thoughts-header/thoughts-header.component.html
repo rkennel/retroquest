@@ -29,7 +29,7 @@
 
   <rq-text-field
     *ngIf="!hideNewThought"
-    [type]="thoughtAggregation.topic"
+    [type]="thoughtAggregation.topic + addTheme()"
     [placeholder]="'Enter A Thought'"
     (newMessageAdded)="addThought($event)"
     [theme]="theme"

@@ -80,4 +80,10 @@ export class ThoughtsHeaderComponent implements OnInit {
     }
   }
 
+  addTheme() {
+    if (this.theme === Themes.Dark) {
+      return ' theme-dark';
+    }
+    return '';
+  }
 }

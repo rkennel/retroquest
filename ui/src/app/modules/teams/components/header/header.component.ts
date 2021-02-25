@@ -50,10 +50,10 @@ export class HeaderComponent implements OnInit {
     private saveChecker: SaveCheckerService,
     private http: HttpClient
   ) {
-
   }
 
   public ngOnInit(): void {
+
   }
 
   get boardIsOpenToEveryone(): boolean {

@@ -36,7 +36,7 @@ plugins {
 apply plugin: 'com.google.cloud.tools.appengine-appyaml'
 
 group = 'com.ford.labs'
-archivesBaseName = 'retroquest'
+archivesBaseName = 'retroquest-wth'
 version = '2.0.0'
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion

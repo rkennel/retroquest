@@ -22,7 +22,7 @@
   box-sizing: border-box;
   display: block;
 
-  height: 64px;
+  height: 120px;
   margin: 0 auto;
   max-width: $desktop-max-width;
   min-width: $desktop-max-width;
@@ -86,7 +86,7 @@
       }
 
       .logo-link {
-        height: 36px;
+        height: 120px;
         margin: 0;
         padding: 0;
 
@@ -96,7 +96,7 @@
 
         #logo {
           border-radius: 6px;
-          height: inherit;
+          height: 120px;
 
           @media only screen and (max-width: 610px) {
             display: none;
