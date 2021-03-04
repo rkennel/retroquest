@@ -85,8 +85,9 @@ dependencies {
     implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
     implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
 
+    implementation 'com.google.cloud.sql:mysql-socket-factory-connector-j-8:1.2.1'
+
     runtimeOnly 'com.h2database:h2:1.4.200'
-    runtimeOnly 'org.postgresql:postgresql:42.2.16'
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
@@ -244,15 +245,10 @@ appengine {
     }
     stage {
         // configure staging for deployment
+        appEngineDirectory = './api/src/main/appengine'
     }
     deploy {
-        projectId = 'retroquest'
-        version = 'initial' + getDateTs()
+        projectId = System.getProperty("gprojectid")
+        version= System.getProperty("gversion")
     }
-}
-
-def getDateTs() {
-    def date = new Date()
-    def formattedDate = date.format('yyyyMMddHHmmss')
-    return formattedDate
 }

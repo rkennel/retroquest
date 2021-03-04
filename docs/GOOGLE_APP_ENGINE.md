@@ -1,11 +1,11 @@
 ## Setting Up Google Cloud Instance
 ### Setup Google Project
-We recommend using the project ID "retroquest".  If you do this, you will not need to modify the build.gradle file
+We recommend using the project ID "retroquest".  
 ![create project](./images/google_create_project.png)
 
 ### App Engine - Create New Project
 - Java
-- Flexible
+- Standard
 
 ![create app](./images/google_create_app_1.png)
 
@@ -22,23 +22,6 @@ We recommend using the project ID "retroquest".  If you do this, you will not ne
 ### Enable Cloud SQL Admin API
 In order to connect directly to MySQL database from app engine, you need to [Enable the API](https://console.cloud.google.com/flows/enableapi?apiid=sqladmin&redirect=https://console.cloud.google.com&_ga=2.76411670.-2090376866.1552752988)
 ## Setting up build scripts
-### build.gradle
-build.gradle needs to point to the project id that you wish to deploy to.  If you did not use "retroquest" as your project ID, then you will need to modify the appengine deploy configuration.
-In the example below, we used "annarbor" as the project ID.
-```
-appengine {
-    tools {
-        // configure the Cloud Sdk tooling
-    }
-    stage {
-        // configure staging for deployment
-    }
-    deploy {
-        projectId = 'annarbor'
-        version = 'initial' + getDateTs()
-    }
-}
-```
 
 ### app.yaml
 To deploy to google app engine, we will need to create an app.yaml file.  Rename sample.app.yaml in the github repository to app.yaml.
@@ -46,9 +29,12 @@ To deploy to google app engine, we will need to create an app.yaml file.  Rename
 Next, we will need to configure the environment variables for connecting to the database.
 ```
 env_variables:
-  SPRING_DATASOURCE_PASSWORD: BH3HiG3vtj6ExmrA
-  SPRING_DATASOURCE_URL: jdbc:mysql://google/retroquest?cloudSqlInstance=annarbor:us-central1:ascot&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false
-  SPRING_DATASOURCE_USERNAME: root
+  GCP_INSTANCE: <GCP_INSTANCE>
+  SPRING_DATASOURCE_USERNAME: <DB USER NAME>
+  SPRING_DATASOURCE_PASSWORD: <DB PASSWORD>
+  SPRING_DATASOURCE_URL: jdbc:mysql://<GOOGLE DB INSTANCE NAME>
+  SPRING_DATASOURCE_NAME: retroquest
+  SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.google.cloud.sql.mysql.SocketFactory
 ```
 
 Note, in the example above:
@@ -61,4 +47,9 @@ Note, in the example above:
 ### Authenticate to Google Cloud
 `gcloud auth application-default login`
 ### Deploy Application
-`./gradlew appengineDeploy`
+`./gradlew withGoogleMySql appEngineDeploy -Dgprojectid=retroquest -Dgversion=<version>`
+
+Note:
+- This assumes you are using Google Cloud SQL MySQL for database.  Consult [withDb](https://github.com/rkennel/withDb) for use of alternate databases
+- This assumes your project name is retroquest.  If not, change accordingly
+- You will need to provide version number for the deploy e.g. 2-0-0.
