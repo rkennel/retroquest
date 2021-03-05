@@ -18,6 +18,7 @@
 package com.ford.labs.retroquest.team;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,6 +27,8 @@ import org.springframework.data.domain.Persistable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 @Data
@@ -52,6 +55,8 @@ public class Team implements Persistable<String> {
     @JsonIgnore
     private LocalDate lastLoginDate;
 
+    private String uiConfig;
+
     public Team(String uri, String name, String password) {
         this.uri = uri;
         this.name = name;
@@ -68,5 +73,14 @@ public class Team implements Persistable<String> {
     @Override
     public boolean isNew() {
         return uri == null;
+    }
+
+    public TeamUIConfig getTeamUIConfig() {
+        try {
+            ObjectMapper om = new ObjectMapper();
+            return om.readValue(uiConfig.getBytes(StandardCharsets.UTF_8),TeamUIConfig.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Error converting ui config to json");
+        }
     }
 }

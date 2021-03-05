@@ -18,6 +18,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/index';
+import {Team} from '../../boards/pages/user-view/team';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,12 @@ export class TeamService {
     return this.http.get(
       `/api/team/${teamId}/name`,
       {responseType: 'text'}
+    );
+  }
+
+  fetchTeam(teamId: string): Observable<Team> {
+    return this.http.get<Team>(
+      `/api/team/${teamId}`
     );
   }
 

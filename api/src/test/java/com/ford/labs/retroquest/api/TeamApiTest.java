@@ -76,6 +76,41 @@ public class TeamApiTest extends ApiTest {
     }
 
     @Test
+    public void initializes_default_ui_settings() throws Exception {
+        installSuccessCaptcha();
+
+        CreateTeamRequest sentCreateTeamRequest = CreateTeamRequest.builder()
+                .name(teamId)
+                .password(VALID_PASSWORD)
+                .captchaResponse("some captcha")
+                .build();
+
+        MvcResult mvcResult = mockMvc.perform(post("/api/team")
+                .contentType(APPLICATION_JSON)
+                .content(objectMapper.writeValueAsBytes(sentCreateTeamRequest)))
+                .andExpect(status().isCreated())
+                .andReturn();
+
+        Team team = teamRepository.findById(sentCreateTeamRequest.getName().toLowerCase()).orElseThrow();
+
+        TeamUIConfig config = team.getTeamUIConfig();
+        assertThat(config.getTitle1Color()).isEqualTo("#2ecc71");
+        assertThat(config.getTitle1ColorDark()).isEqualTo("#27ae60");
+        assertThat(config.getTitle2Color()).isEqualTo("#3498db");
+        assertThat(config.getTitle2ColorDark()).isEqualTo("#2980b9");
+        assertThat(config.getTitle3Color()).isEqualTo("#e74c3c");
+        assertThat(config.getTitle3ColorDark()).isEqualTo("#f39c12");
+        assertThat(config.getTitle4Color()).isEqualTo("#f1c40f");
+        assertThat(config.getTitle4ColorDark()).isEqualTo("#c0392b");
+        assertThat(config.getTitle5Color()).isEqualTo("#9965F4");
+        assertThat(config.getTitle5ColorDark()).isEqualTo("#D4BFF9");
+
+        assertThat(config.getTeamLogoUrl()).isEqualTo("http://retroquest.ford.com/assets/icons/icon-72x72.png");
+        assertThat(config.getHeaderHeight()).isEqualTo("64px");
+        assertThat(config.getFooterImageUrl()).isEqualTo(null);
+    }
+
+    @Test
     public void should_not_create_team_with_empty_password() throws Exception {
         installSuccessCaptcha();
 

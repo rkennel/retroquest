@@ -46,7 +46,6 @@ export class SubAppComponent implements OnInit, AfterViewInit {
     this.activatedRoute.params.subscribe((params) => {
       this.teamId = params.teamId;
       this.dataService.team.id = this.teamId;
-
       this.setTeamName();
     });
   }
@@ -73,7 +72,6 @@ export class SubAppComponent implements OnInit, AfterViewInit {
   private setTeamName(): void {
     this.teamService.fetchTeamName(this.teamId).subscribe(
       (teamName) => {
-        this.teamName = teamName;
         this.dataService.team.name = this.teamName;
         this.titleService.setTitle(this.teamName + ' | RetroQuest');
       }

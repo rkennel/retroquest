@@ -90,6 +90,13 @@ public class TeamController {
         return teamService.getTeamByUri(teamUri).getName();
     }
 
+    @GetMapping("/team/{teamUri}")
+    @ApiOperation(value = "Gets a team name given the team uri", notes = "getTeamName")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = String.class)})
+    public Team getTeam(@PathVariable("teamUri") String teamUri) {
+        return teamService.getTeamByUri(teamUri);
+    }
+
     @GetMapping(value = "/team/{teamId}/csv", produces = "application/board.csv")
     @PreAuthorize("@apiAuthorization.requestIsAuthorized(authentication, #teamId)")
     @ApiOperation(value = "downloads a team board", notes = "downloadTeamBoard")

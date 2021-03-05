@@ -17,6 +17,8 @@
 
 package com.ford.labs.retroquest.team;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ford.labs.retroquest.actionitem.ActionItem;
 import com.ford.labs.retroquest.actionitem.ActionItemRepository;
 import com.ford.labs.retroquest.columntitle.ColumnTitle;
@@ -41,6 +43,22 @@ public class TeamService {
     private final TeamRepository teamRepository;
     private final PasswordEncoder passwordEncoder;
     private final ColumnTitleRepository columnTitleRepository;
+
+    private static final TeamUIConfig DEFAULT_UI_CONFIG = TeamUIConfig.builder()
+            .title1Color("#2ecc71")
+            .title1ColorDark("#27ae60")
+            .title2Color("#3498db")
+            .title2ColorDark("#2980b9")
+            .title3Color("#e74c3c")
+            .title3ColorDark("#f39c12")
+            .title4Color("#f1c40f")
+            .title4ColorDark("#c0392b")
+            .title5Color("#9965F4")
+            .title5ColorDark("#D4BFF9")
+            .teamLogoUrl("http://retroquest.ford.com/assets/icons/icon-72x72.png")
+            .headerHeight("64px")
+            .footerImageUrl(null)
+            .build();
 
     public TeamService(
             ThoughtRepository thoughtRepository,
@@ -87,6 +105,11 @@ public class TeamService {
 
         Team teamEntity = new Team(uri, trimmedName, password);
         teamEntity.setDateCreated(LocalDate.now());
+        try {
+            teamEntity.setUiConfig(new ObjectMapper().writeValueAsString(DEFAULT_UI_CONFIG));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
 
         teamEntity = teamRepository.save(teamEntity);
         generateColumns(teamEntity);
