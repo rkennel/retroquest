@@ -77,10 +77,10 @@ export class TopHeaderComponent implements OnInit {
 
   get themeLogo(): string {
     if (this.darkThemeIsEnabled) {
-      return '/assets/Logo-WTH-01-dark.svg';
+      return '/assets/logo_light.svg';
     }
 
-    return '/assets/Logo-WTH-01.svg';
+    return '/assets/logo_dark.svg';
   }
 
 
