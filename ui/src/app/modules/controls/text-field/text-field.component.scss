@@ -63,34 +63,34 @@
     }
 
     &.happy {
-      border-color: $happy-green;
+      border-color: var(--column1);
 
       &.dark-theme {
-        border-color: $nephritis;
+        border-color: var(--column1-dark);
       }
     }
 
     &.confused {
-      border-color: $confused-blue;
+      border-color: var(--column2);
 
       &.dark-theme {
-        border-color: $belize-hole;
+        border-color: var(--column2-dark);
       }
     }
 
     &.sad {
-      border-color: $unhappy-red;
+      border-color: var(--column3);
 
       &.dark-theme {
-        border-color: $pomegranate;
+        border-color: var(--column3-dark);
       }
     }
 
     &.action {
-      border-color: $action-yellow;
+      border-color: var(--column4);
 
       &.dark-theme {
-        border-color: $orange;
+        border-color: var(--column4-dark);
       }
     }
   }

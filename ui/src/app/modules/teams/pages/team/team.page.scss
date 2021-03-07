@@ -53,7 +53,7 @@
     }
 
     .guide-button {
-      background-color: $happy-green;
+      background-color: var(--column1);
       box-sizing: border-box;
       height: 100%;
       opacity: .35;
@@ -67,10 +67,10 @@
 
 
       &.happy-guide-button {
-        background-color: $happy-green;
+        background-color: var(--column1);
 
         &.dark-theme {
-          background-color: $nephritis;
+          background-color: var(--column1-dark);
         }
 
         &.selected {
@@ -84,10 +84,10 @@
       }
 
       &.confused-guide-button {
-        background-color: $confused-blue;
+        background-color: var(--column2);
 
         &.dark-theme {
-          background-color: $belize-hole;
+          background-color: var(--column2-dark);
         }
 
         &.selected {
@@ -101,28 +101,28 @@
       }
 
       &.sad-guide-button {
-        background-color: $unhappy-red;
+        background-color: var(--column3);
 
         &.selected {
           border-top: 6px solid $wet-asphalt;
           opacity: 1;
 
           &.dark-theme {
-            background-color: $pomegranate;
+            background-color: var(--column3-dark);
             border-top-color: $dark-theme-accent-color;
           }
         }
       }
 
       &.action-guide-button {
-        background-color: $action-yellow;
+        background-color: var(--column4);
 
         &.selected {
           border-top: 6px solid $wet-asphalt;
           opacity: 1;
 
           &.dark-theme {
-            background-color: $orange;
+            background-color: var(--column4-dark);
             border-top-color: $dark-theme-accent-color;
           }
         }

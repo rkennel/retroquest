@@ -146,7 +146,7 @@
         position: relative;
 
         rq-button {
-          background-color: opacity($action-yellow, .7);
+          background-color: opacity(var(--column4), .7);
           color: $wet-asphalt;
           font-size: 1.2rem;
           font-weight: bold;
@@ -155,7 +155,7 @@
           width: 75%;
 
           &:hover {
-            background-color: opacity($action-yellow, .7);
+            background-color: opacity(var(--column4), .7);
           }
         }
 

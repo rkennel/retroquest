@@ -45,7 +45,7 @@
     rq-deletion-overlay {
       $border-width: 8px;
 
-      box-shadow: 0 0 0 $border-width $unhappy-red;
+      box-shadow: 0 0 0 $border-width var(--column3);
     }
   }
 
@@ -68,10 +68,10 @@
   &.happy {
 
     &:hover {
-      box-shadow: 0 0 0 $host-border-width $happy-green;
+      box-shadow: 0 0 0 $host-border-width var(--column1);
 
       &.dark-theme {
-        box-shadow: 0 0 0 $host-border-width $nephritis;
+        box-shadow: 0 0 0 $host-border-width var(--column1-dark);
       }
 
     }
@@ -95,27 +95,34 @@
 
   &.confused {
     &:hover {
-      box-shadow: 0 0 0 $host-border-width $confused-blue;
+      box-shadow: 0 0 0 $host-border-width var(--column2);
 
       &.dark-theme {
-        box-shadow: 0 0 0 $host-border-width $belize-hole;
+        box-shadow: 0 0 0 $host-border-width var(--column2-dark);
       }
+
     }
   }
 
   &.sad {
     &:hover {
-      box-shadow: 0 0 0 $host-border-width $unhappy-red;
+      box-shadow: 0 0 0 $host-border-width var(--column3);
 
       &.dark-theme {
-        box-shadow: 0 0 0 $host-border-width $pomegranate;
+        box-shadow: 0 0 0 $host-border-width var(--column3-dark);
       }
+
     }
   }
 
   &.action {
     &:hover {
-      box-shadow: 0 0 0 $host-border-width $action-yellow;
+      box-shadow: 0 0 0 $host-border-width var(--column4);
+
+      &.dark-theme {
+        box-shadow: 0 0 0 $host-border-width var(--column4-dark);
+      }
+
     }
   }
 
@@ -295,7 +302,7 @@
       }
 
       .star-background {
-        background-color: $action-yellow;
+        background-color: var(--column4);
         border-radius: 12px / 6px;
         height: 10px;
         margin-top: 10px;
@@ -319,7 +326,7 @@
           top: -10px;
 
           &.dark-theme {
-            color: $action-yellow;
+            color: var(--column4);
           }
         }
       }

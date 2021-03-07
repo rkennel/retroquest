@@ -41,8 +41,8 @@
     $base-drop-shadow: 0 19px 38px opacity($black, .3);
     $border-width: 8px;
 
-    $action-shadow: 0 0 0 $border-width $action-yellow, $base-drop-shadow;
-    $action-shadow-dark: 0 0 0 $border-width $orange, $base-drop-shadow;
+    $action-shadow: 0 0 0 $border-width var(--column4), $base-drop-shadow;
+    $action-shadow-dark: 0 0 0 $border-width var(--column4-dark), $base-drop-shadow;
 
     $edit-mode-shadow:  0 0 0 8px $grape, $base-drop-shadow;
     $edit-mode-shadow-dark:  0 0 0 8px $wisteria, $base-drop-shadow;

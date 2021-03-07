@@ -121,7 +121,7 @@
       }
 
       .star-line {
-        color: $confused-blue;
+        color: var(--column3);
         font-size: 3.3rem;
         text-align: center;
 
@@ -130,7 +130,7 @@
         }
 
         .active {
-          color: $action-yellow;
+          color: var(--column4);
         }
       }
 
@@ -140,7 +140,7 @@
       }
 
       .required-field {
-        color: $unhappy-red;
+        color: var(--column3);
         font-size: 1.5rem;
         font-weight: bold;
       }
@@ -158,7 +158,7 @@
 
         textarea {
           background-color: inherit;
-          border: 5px $confused-blue solid;
+          border: 5px var(--column3) solid;
           border-radius: 6px;
           box-sizing: border-box;
           color: inherit;
@@ -270,7 +270,7 @@
           }
 
           &.primary {
-            background-color: $confused-blue;
+            background-color: var(--column3);
           }
 
         }

@@ -21,7 +21,7 @@
   background-color: opacity($white, .98);
   border-radius: 6px;
   bottom: 0;
-  box-shadow: 0 0 0 4px $unhappy-red;
+  box-shadow: 0 0 0 4px var(--column3);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@
         background-color: transparent;
         border-radius: 0 0 6px;
         box-shadow: none;
-        color: $unhappy-red;
+        color: var(--column3);
       }
     }
 
