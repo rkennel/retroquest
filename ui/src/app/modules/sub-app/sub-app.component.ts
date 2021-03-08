@@ -21,6 +21,7 @@ import {TeamService} from '../teams/services/team.service';
 import {DataService} from '../data.service';
 import {parseTheme, Themes} from '../domain/Theme';
 import {Title} from '@angular/platform-browser';
+import {UIConfig} from '../domain/UIConfig';
 
 @Component({
   selector: 'rq-sub-app',
@@ -34,6 +35,7 @@ export class SubAppComponent implements OnInit, AfterViewInit {
 
   teamId: string;
   teamName: string;
+  teamUIConfig: UIConfig;
 
   constructor(private activatedRoute: ActivatedRoute,
               private teamService: TeamService,
@@ -48,6 +50,7 @@ export class SubAppComponent implements OnInit, AfterViewInit {
       this.dataService.team.id = this.teamId;
 
       this.setTeamName();
+      this.setTeamUIConfig();
     });
   }
 
@@ -83,5 +86,33 @@ export class SubAppComponent implements OnInit, AfterViewInit {
   emitThemeChanged(theme: Themes) {
     this.dataService.theme = theme;
     this.dataService.themeChanged.emit(theme);
+  }
+
+  private setTeamUIConfig() {
+
+    function protectAgainstEmptyColors(specified: string, def: string) {
+      return (!specified) || (specified === '') ? def : specified;
+    }
+
+    function setGlobalCssColors(uiConfig: UIConfig) {
+      document.documentElement.style.setProperty('--column1', protectAgainstEmptyColors(uiConfig.column1Color, UIConfig.DEFAULT.column1Color));
+      document.documentElement.style.setProperty('--column2', protectAgainstEmptyColors(uiConfig.column1Color, UIConfig.DEFAULT.column2Color));
+      document.documentElement.style.setProperty('--column3', protectAgainstEmptyColors(uiConfig.column3Color, UIConfig.DEFAULT.column3Color));
+      document.documentElement.style.setProperty('--column4', protectAgainstEmptyColors(uiConfig.column4Color, UIConfig.DEFAULT.column4Color));
+      document.documentElement.style.setProperty('--column5', protectAgainstEmptyColors(uiConfig.column5Color, UIConfig.DEFAULT.column5Color));
+      document.documentElement.style.setProperty('--column1-dark', protectAgainstEmptyColors(uiConfig.column1ColorDark, UIConfig.DEFAULT.column1ColorDark));
+      document.documentElement.style.setProperty('--column2-dark', protectAgainstEmptyColors(uiConfig.column1ColorDark, UIConfig.DEFAULT.column2ColorDark));
+      document.documentElement.style.setProperty('--column3-dark', protectAgainstEmptyColors(uiConfig.column3ColorDark, UIConfig.DEFAULT.column3ColorDark));
+      document.documentElement.style.setProperty('--column4-dark', protectAgainstEmptyColors(uiConfig.column4ColorDark, UIConfig.DEFAULT.column4ColorDark));
+      document.documentElement.style.setProperty('--column5-dark', protectAgainstEmptyColors(uiConfig.column5ColorDark, UIConfig.DEFAULT.column5ColorDark));
+    }
+
+    this.teamService.fetchTeamUiConfig(this.teamId).subscribe(
+      (uiConfig) => {
+
+        this.teamUIConfig = uiConfig;
+        setGlobalCssColors(uiConfig);
+      }
+    );
   }
 }

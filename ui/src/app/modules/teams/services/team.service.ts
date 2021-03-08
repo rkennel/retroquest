@@ -18,6 +18,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/index';
+import {UIConfig} from '../../domain/UIConfig';
+import {of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +58,10 @@ export class TeamService {
       `/api/team/${teamId}/name`,
       {responseType: 'text'}
     );
+  }
+
+  fetchTeamUiConfig(teamId: string): Observable<UIConfig> {
+    return of(new UIConfig());
   }
 
   validateTeamId(teamId: string): Observable<HttpResponse<Object>> {

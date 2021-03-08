@@ -106,6 +106,9 @@ export class TeamPageComponent implements OnInit {
         this.websocketService.sendHeartbeat();
       }
     }, 1000 * 60);
+
+    // document.documentElement.style
+    //   .setProperty('--column3', 'pink');
   }
 
   private subscribeToWebsocket() {

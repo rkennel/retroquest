@@ -23,6 +23,7 @@ import {of} from 'rxjs';
 import {instance, mock, verify, when} from 'ts-mockito';
 import {Themes} from '../domain/Theme';
 import {Title} from '@angular/platform-browser';
+import {UIConfig} from '../domain/UIConfig';
 
 describe('SubAppComponent', () => {
   let component: SubAppComponent;
@@ -52,6 +53,7 @@ describe('SubAppComponent', () => {
     beforeEach(() => {
       when(activatedRoute.params).thenReturn(of({teamId: fakeId}));
       when(teamService.fetchTeamName(fakeId)).thenReturn(of(fakeName));
+      when(teamService.fetchTeamUiConfig(fakeId)).thenReturn(of(new UIConfig()));
       component.ngOnInit();
     });
 
@@ -68,6 +70,20 @@ describe('SubAppComponent', () => {
     it('should change the window title to include the team name', () => {
       verify(titleService.setTitle(`${fakeName} | RetroQuest`)).called();
     });
+
+    it('sets the UIConfig colors to Default', () => {
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column1').trim()).toEqual(UIConfig.CLASSIC.column1Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column2').trim()).toEqual(UIConfig.CLASSIC.column2Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column3').trim()).toEqual(UIConfig.CLASSIC.column3Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column4').trim()).toEqual(UIConfig.CLASSIC.column4Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column5').trim()).toEqual(UIConfig.CLASSIC.column5Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column1Dark').trim()).toEqual(UIConfig.CLASSIC.column1ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column2Dark').trim()).toEqual(UIConfig.CLASSIC.column2ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column3Dark').trim()).toEqual(UIConfig.CLASSIC.column3ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column4Dark').trim()).toEqual(UIConfig.CLASSIC.column4ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column5Dark').trim()).toEqual(UIConfig.CLASSIC.column5ColorDark);
+    });
+
   });
 
   describe('emitThemeChanged', () => {
@@ -85,3 +101,50 @@ describe('SubAppComponent', () => {
     });
   });
 });
+
+/*
+describe('Custom UI Cong', () => {
+
+    it('Defaults to classic RetroQuest colors', () => {
+      // document.documentElement.style
+      //   .setProperty('--column1', 'pink');
+      const fakeId = 'fake-id';
+      const fakeName = 'fake-name';
+      when(activatedRoute.params).thenReturn(of({teamId: fakeId}));
+      when(teamService.fetchTeamName(fakeId)).thenReturn(of(fakeName));
+      when(teamService.fetchTeamUiConfig(fakeId)).thenReturn(of(new UIConfig()));
+      component.ngOnInit();
+
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column1').trim()).toEqual(UIConfig.CLASSIC.column1Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column2').trim()).toEqual(UIConfig.CLASSIC.column2Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column3').trim()).toEqual(UIConfig.CLASSIC.column3Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column4').trim()).toEqual(UIConfig.CLASSIC.column4Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column5').trim()).toEqual(UIConfig.CLASSIC.column5Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column1Dark').trim()).toEqual(UIConfig.CLASSIC.column1ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column2Dark').trim()).toEqual(UIConfig.CLASSIC.column2ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column3Dark').trim()).toEqual(UIConfig.CLASSIC.column3ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column4Dark').trim()).toEqual(UIConfig.CLASSIC.column4ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column5Dark').trim()).toEqual(UIConfig.CLASSIC.column5ColorDark);
+    });
+    it('When Team UIConfig is not classic, then global CSS variables should updated', () => {
+
+      const fakeId = 'fake-id';
+      const fakeName = 'fake-name';
+      when(activatedRoute.params).thenReturn(of({teamId: fakeId}));
+      when(teamService.fetchTeamName(fakeId)).thenReturn(of(fakeName));
+      when(teamService.fetchTeamUiConfig(fakeId)).thenReturn(of(UIConfig.FORD));
+      component.ngOnInit();
+
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column1').trim()).toEqual(UIConfig.FORD.column1Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column2').trim()).toEqual(UIConfig.FORD.column2Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column3').trim()).toEqual(UIConfig.FORD.column3Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column4').trim()).toEqual(UIConfig.FORD.column4Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column5').trim()).toEqual(UIConfig.FORD.column5Color);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column1Dark').trim()).toEqual(UIConfig.FORD.column1ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column2Dark').trim()).toEqual(UIConfig.FORD.column2ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column3Dark').trim()).toEqual(UIConfig.FORD.column3ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column4Dark').trim()).toEqual(UIConfig.FORD.column4ColorDark);
+      expect(getComputedStyle(document.documentElement).getPropertyValue('--column5Dark').trim()).toEqual(UIConfig.FORD.column5ColorDark);
+    });
+  });
+ */
