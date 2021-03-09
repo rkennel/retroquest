@@ -15,16 +15,16 @@ export class UIConfig {
 
 
   static FORD: UIConfig = new UIConfig(
-    '#00095B',
-    '#1700F4',
-    '#00142E',
-    '#4d4d4d',
-    '#ba4e00',
-    '#00095B',
-    '#0098ff',
-    '#5c708b',
-    '#ababab',
-    '#fb9862'
+    '#092A46',
+    '#0276b3',
+    '#555555',
+    '#b0b0b0',
+    '#242424',
+    '#6a86a0',
+    '#51c1ee',
+    '#b0b0b0',
+    '#d4d4d4',
+    '#e3e3e3'
   );
 
   static ANN_ARBOR: UIConfig = new UIConfig(
@@ -118,7 +118,33 @@ export class UIConfig {
     '#ff7e5e'
   );
 
-  static DEFAULT: UIConfig = UIConfig.CLASSIC;
+  static BRAZIL: UIConfig = new UIConfig(
+    '#009c3b',
+    '#ffdf00',
+    '#002776',
+    '#ffdf00',
+    '#009c3b',
+    '#6bc47d',
+    '#fcf267',
+    '#7287c4',
+    '#fcf267',
+    '#6bc47d'
+  );
+
+  static ARGENTINA: UIConfig = new UIConfig(
+    '#75aadb',
+    '#f6b40e',
+    '#843511',
+    '#75aadb',
+    '#f6b40e',
+    '#98c2e6',
+    '#f8d653',
+    '#d07f5c',
+    '#98c2e6',
+    '#f8d653'
+  );
+
+  static DEFAULT: UIConfig = UIConfig.ARGENTINA;
 
   column1Color = '';
   column2Color = '';

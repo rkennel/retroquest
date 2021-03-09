@@ -19,14 +19,26 @@
 
   <div class="left-content">
     <a routerLink="/" class="logo-link">
-      <img
-        [src]="darkThemeIsEnabled ? '/assets/icons/icon-light-72x72.png' : '/assets/icons/icon-72x72.png'"
-        title="RetroQuest"
-        id="logo"
-        [ngClass]="{
-        'dark-theme': darkThemeIsEnabled
-      }"
-      />
+      <svg id="logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+           width="36"
+           height="36" viewBox="0, 0, 400,400">
+        <g id="svgg">
+          <rect id="outerSquare" [ngClass]="{'dark-theme': darkThemeIsEnabled}" x="0" y="0" width="400" height="400" rx="50"
+                fill="#344c5c" fill-rule="evenodd"/>
+          <path id="Stripe1" [ngClass]="{'dark-theme': darkThemeIsEnabled}"
+                d="M100.099 198.900 L 100.200 287.400 125.100 287.503 L 150.000 287.606 150.000 199.003 L 150.000 110.400 124.999 110.400 L 99.998 110.400 100.099 198.900 "
+                stroke="none" fill-rule="evenodd"></path>
+          <path id="Stripe2" [ngClass]="{'dark-theme': darkThemeIsEnabled}"
+                d="M150.000 199.000 L 150.000 287.600 175.000 287.600 L 200.000 287.600 200.000 199.000 L 200.000 110.400 175.000 110.400 L 150.000 110.400 150.000 199.000 "
+                stroke="none" fill="#349cdc" fill-rule="evenodd"></path>
+          <path id="Stripe3" [ngClass]="{'dark-theme': darkThemeIsEnabled}"
+                d="M200.185 110.500 C 200.080 110.775,200.041 150.690,200.097 199.200 L 200.200 287.400 225.200 287.503 L 250.200 287.606 250.098 199.006 L 249.996 110.406 274.898 110.300 C 288.594 110.242,277.429 110.150,250.087 110.097 C 210.614 110.020,200.336 110.103,200.185 110.500 "
+                stroke="none" fill="#e44c3c" fill-rule="evenodd"></path>
+          <path id="Stripe4" [ngClass]="{'dark-theme': darkThemeIsEnabled}"
+                d="M250.099 198.900 L 250.200 287.400 275.000 287.400 L 299.800 287.400 299.901 198.900 L 300.002 110.400 275.000 110.400 L 249.998 110.400 250.099 198.900 "
+                stroke="none" fill="#f4c40c" fill-rule="evenodd"></path>
+        </g>
+      </svg>
     </a>
     <div
       class="horizontal-separator"

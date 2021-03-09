@@ -205,4 +205,46 @@
       }
     }
   }
+
+  path#Stripe1 {
+    fill: var(--column1);
+
+    &.dark-theme {
+      fill: var(--column1-dark);
+    }
+  }
+
+  path#Stripe2 {
+    fill: var(--column2);
+
+    &.dark-theme {
+      fill: var(--column2-dark);
+    }
+  }
+
+  path#Stripe3 {
+    fill: var(--column3);
+
+    &.dark-theme {
+      fill: var(--column3-dark);
+    }
+  }
+
+  path#Stripe4 {
+    fill: var(--column4);
+
+    &.dark-theme {
+      fill: var(--column4-dark);
+    }
+  }
+
+  path#outerSquare {
+    fill: #ff0000;
+
+    &.dark-theme {
+      fill: rgba(236, 240, 241, 0.2);
+    }
+  }
+
 }
+
