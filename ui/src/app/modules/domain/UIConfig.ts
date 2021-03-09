@@ -28,16 +28,16 @@ export class UIConfig {
   );
 
   static ANN_ARBOR: UIConfig = new UIConfig(
-    '#00274C',
     '#FFCB05',
     '#00274C',
     '#FFCB05',
     '#00274C',
-    '#1c5284',
+    '#FFCB05',
     '#ffd844',
     '#1c5284',
     '#ffd844',
-    '#1c5284'
+    '#1c5284',
+    '#ffd844'
   );
 
   static LANSING: UIConfig = new UIConfig(
@@ -144,7 +144,20 @@ export class UIConfig {
     '#f8d653'
   );
 
-  static DEFAULT: UIConfig = UIConfig.ARGENTINA;
+  static GREECE: UIConfig = new UIConfig(
+    '#0d5eaf',
+    '#c2c2c2',
+    '#0d5eaf',
+    '#c2c2c2',
+    '#0d5eaf',
+    '#62aee8',
+    '#c2c2c2',
+    '#62aee8',
+    '#c2c2c2',
+    '#62aee8'
+  );
+
+  static DEFAULT: UIConfig = UIConfig.GREECE;
 
   column1Color = '';
   column2Color = '';
